@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'black_circles/page.dart';
+import 'blob_field/page.dart';
 import 'elastic_sidebar/page.dart';
+import 'fabric_simulation/page.dart';
+import 'snowing/page.dart';
 
 const demoName = String.fromEnvironment("DemoName", defaultValue: "main");
 
@@ -27,6 +31,14 @@ class AppBackboneState extends State<AppBackbone> {
     switch (demoName) {
       case 'elastic_sidebar':
         return ElasticSidebarDemo();
+      case 'snowing':
+        return SnowingDemo();
+      case 'blob_field':
+        return BlobFieldDemo();
+      case 'black_circles':
+        return BlackCirclesDemo();
+      case 'fabric_simulation':
+        return FabricSimulationDemo();
       default:
     }
     return Container();

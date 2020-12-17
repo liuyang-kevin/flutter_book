@@ -5,12 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "elastic_sidebar",
+            "name": "canavs_demos(可修改启动参数)",
             "type": "dart",
             "request": "launch",
-            "program": "sample/ui/main.dart",
+            "program": "sample/art/main.dart",
             "args": [
-                "--dart-define=DemoName=elastic_sidebar"
+                // "--dart-define=DemoName=elastic_sidebar"
+                // "--dart-define=DemoName=snowing"
+                // "--dart-define=DemoName=blob_field"
+                // "--dart-define=DemoName=black_circles"
+                "--dart-define=DemoName=fabric_simulation"
             ]
         }
     ]

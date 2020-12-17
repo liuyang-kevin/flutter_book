@@ -6,3 +6,5 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # https://pub.dev/packages/fast_noise 用他的柏林噪音
+  fast_noise: ^0.1.3+1
