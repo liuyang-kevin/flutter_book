@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button { 
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="startRecord">startRecord</button>
+    <button id="stopRecord">stopRecord</button>
+
+    <div>
+        <a href="https://pulakk.github.io/Live-Audio-MFCC/tutorial.html">Live Audio MFCC (Web Audio API)</a>
+        <br>
+        <a href="https://github.com/pulakk/Live-Audio-MFCC/blob/master/assets/js/sketch.js">js</a>
+    </div>
+
+    <hr>
+    <p>MFCC 实现 </p>
+    <button id="startMFCC">startMFCC</button>
+    <button id="stopMFCC">stopMFCC</button>
+
+    <script src="./voice_echo.js"></script>
+    <script>
+        var echoLib = new VoiceEcho();
+        document.getElementById("stopRecord").onclick = () => {
+            stopVoiceEcho();
+        };
+
+        document.getElementById("startRecord").onclick = () => {
+            startVoiceEcho();
+        };
+
+
+        document.getElementById("startMFCC").onclick = () => {
+            echoLib.startReocrd();
+        };
+
+        document.getElementById("stopMFCC").onclick = () => {
+            echoLib.stopReocrd();
+        };
+    </script>
+</body>
+
+</html>

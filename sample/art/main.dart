@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'black_circles/page.dart';
 import 'blob_field/page.dart';
+import 'curved_text/page.dart';
 import 'elastic_sidebar/page.dart';
 import 'fabric_simulation/page.dart';
 import 'snowing/page.dart';
@@ -39,6 +40,8 @@ class AppBackboneState extends State<AppBackbone> {
         return BlackCirclesDemo();
       case 'fabric_simulation':
         return FabricSimulationDemo();
+      case 'curved_text':
+        return CurvedTextDemo();
       default:
     }
     return Container();

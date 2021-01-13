@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- scripts -->
+    <script src="assets/js/dependencies/jquery.min.js"></script>
+    <script src="assets/js/dependencies/meyda/meyda.min.js"></script>
+    <script src="assets/js/dependencies/p5/p5.min.js"></script>
+    <script src="assets/js/dependencies/p5/addons/p5.dom.min.js"></script>
+    <script src="assets/js/sketch.js"></script>
+</head>
+
+<body>
+    <p>这个demo来源于<a href="https://pulakk.github.io/Live-Audio-MFCC/tutorial.html">live audio mfcc</a></p>
+    <p>mfcc主要依赖于Meyda js库，可以获得audio stream以及傅立叶变换fft，梅尔倒谱mfcc等</p>
+    <p>音频实时性主要依赖于Chrome的内部实现，js可以快速获得audio stream</p>
+    <p>图形方面使用了p5.js这个库，提供了绘制等方法。最为主要的是，
+        <li>p5.js默认执行setup全局函数，</li>
+        <li>draw是持续绘制函数，</li>js的入口点方法在sketch.js 文件的 setup函数上。
+    </p>
+</body>
+
+</html>

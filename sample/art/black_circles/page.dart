@@ -16,9 +16,6 @@ class BlackCirclesDemo extends StatefulWidget {
 class _State extends State<BlackCirclesDemo> with TickerProviderStateMixin {
   List<Particle> particles = [];
   int particleCount = 50;
-  Size size;
-  Offset origin;
-  double radius;
 
   AnimationController ctrl;
   Animation<double> anim;
@@ -81,17 +78,18 @@ class _State extends State<BlackCirclesDemo> with TickerProviderStateMixin {
     );
   }
 
+  var origin;
   void createBlobField() {
-    size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     origin = Offset(size.width / 2, size.height / 2);
-    radius = size.width / 4; // radius of the blob
+    var radius = size.width / 4; // radius of the blob
 
     blobField(origin, radius);
   }
 
   void blobField(Offset o, double r) {
     while (particles.length < particleCount) {
-      particles.add(newParticle(origin));
+      particles.add(newParticle(o));
     }
   }
 
@@ -159,13 +157,13 @@ class _CPainter extends CustomPainter {
 }
 
 class Particle {
-  Offset pos;
-  Offset originPos;
-  Color color;
-  double speed;
-  double theta;
+  Offset pos = Offset(0, 0);
+  Offset originPos = Offset(0, 0);
+  Color color = Colors.transparent;
+  double speed = 0.0;
+  double theta = 0.0;
 
-  double radius;
+  double radius = 1.0;
 }
 
 Color randomColor(Random random) {

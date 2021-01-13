@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "main.dart",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": [
+                // "--web-renderer canvaskit"
+            ]
+        },
+        {
             "name": "canavs_demos(可修改启动参数)",
             "type": "dart",
             "request": "launch",
@@ -14,7 +23,16 @@
                 // "--dart-define=DemoName=snowing"
                 // "--dart-define=DemoName=blob_field"
                 // "--dart-define=DemoName=black_circles"
-                "--dart-define=DemoName=fabric_simulation"
+                // "--dart-define=DemoName=fabric_simulation"
+                "--dart-define=DemoName=curved_text"
+            ]
+        },
+        {
+            "name": "hero 剪裁动画 demo（官方）",
+            "type": "dart",
+            "request": "launch",
+            "program": "sample/hero/main.dart",
+            "args": [
             ]
         }
     ]

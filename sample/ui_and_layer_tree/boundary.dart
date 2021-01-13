@@ -31,8 +31,6 @@ class LayoutBoundaryDelegate extends MultiChildLayoutDelegate {
 }
 
 class LayoutBoundary extends StatefulWidget {
-  LayoutBoundary({Key key}) : super(key: key);
-
   @override
   _LayoutBoundaryState createState() => _LayoutBoundaryState();
 }
@@ -74,7 +72,6 @@ class CirclePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print('CirclePainter paint');
     var radius = size.width / 2;
     var paint = Paint()
       ..color = color

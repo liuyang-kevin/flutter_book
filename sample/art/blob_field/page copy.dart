@@ -115,12 +115,13 @@ List<Particle> blobField(double r, int n, double a, Offset o) {
 }
 
 class Particle {
-  Offset pos;
-  Color color;
-  double speed;
-  double theta;
+  Offset pos = Offset(0, 0);
+  Offset originPos = Offset(0, 0);
+  Color color = Colors.transparent;
+  double speed = 0.0;
+  double theta = 0.0;
 
-  double radius;
+  double radius = 1.0;
 }
 
 Color randomColor(Random random) {

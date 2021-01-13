@@ -1,0 +1,12 @@
+# dart lint 代码静态检查。自定义审核规则
+# https://s0dart0dev.icopy.site/guides/language/analysis-options
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  exclude: [test_driver/**, test/**, android/**, ios/**, lib/generated/**, lib/r.g.dart]
+
+linter:
+  rules:
+    - avoid_print # 生产环境代码不要使用print, 使用打印后，可以吧结果作为注释
+    - avoid_slow_async_io # 避免慢io异步,基本都是文件操作，需要使用同步方法更快 https://github.com/FifthAI/dart-tutorial/blob/master/x05_analysis_options/avoid_slow_async_io.dart
+    - package_names #  包名用小写下划线，lowercase_with_underscores

@@ -3,7 +3,7 @@
 * relayout boundary 与 repaint boundary
 
 ## Flutter的绘图原理和UI的基本流程
-![](../images4md/2020-10-26-16-18-18.png)
+![](./images4md/2020-10-26-16-18-18.png)
 
 1. GPU 发出 Vsync 信号
 2. Dart的UI线程处理重绘逻辑
@@ -12,7 +12,7 @@
 5. GL/Vulkan发给GPU
 
 ### 2-3步，UI重绘与Layer Tree的生成
- ![](../images4md/2020-10-26-16-32-23.png)
+ ![](./images4md/2020-10-26-16-32-23.png)
 
  * 经历了Paint方法，只是生成了layer tree
  * 需要Composite合成为一个Layer进行Rasterize光栅化处理。
@@ -20,7 +20,7 @@
 
 光栅化之后才会给Flutter-Engine处理，这里只是Framework层面的工作，所以看不到Engine，而我们分析的也只是Framework中的一小部分。
 
-![](../images4md/###%20.png)
+![](./images4md/###%20.png)
 
 ## 回溯概念
 * widget
@@ -28,7 +28,7 @@
 * RenderObject
 
 ### Widget -> Element -> RenderObject
-![](../images4md/2020-10-26-17-02-15.png)
+![](./images4md/2020-10-26-17-02-15.png)
 
 以上这三个概念也对应着三种树结构：模型树、呈现树、渲染树。
 
@@ -37,7 +37,7 @@
 ## Layout 与 Paint
 ### Layout
 Layout的目的是要计算出每个节点所占空间的真实大小。
-![](../images4md/2020-10-26-17-05-25.png)
+![](./images4md/2020-10-26-17-05-25.png)
 
 构建视图树的时候，节点的Constraints(约束)是自上而下的
 
@@ -53,7 +53,7 @@ flutter是通过**Relayout boundary**来处理这样的问题的。
 
 ## Relayout boundary (就是自己身能确定size)
 它的目的是提高flutter的绘图性能，它的作用是设置测量边界，边界内的Widget做任何改变都不会导致边界外重新计算并绘制。
-![](../images4md/2020-10-26-19-50-04.png)
+![](./images4md/2020-10-26-19-50-04.png)
 当满足以下三个条件的任意一个就会触发Relayout boundary
 
 * constraints.isTight - 最大最小宽高约束一致 - 强约束
@@ -62,7 +62,7 @@ flutter是通过**Relayout boundary**来处理这样的问题的。
 
 ### constraints.isTight 什么是isTight？
 用BoxConstraints为例
-![](../images4md/2020-10-27-11-18-37.png)
+![](./images4md/2020-10-27-11-18-37.png)
 它有四个属性，分别是minWidth，maxWidth，minHeight，maxHeight
 * tight 如果最小约束(minWidth，minHeight)和最大约束(maxWidth，maxHeight)分别都是一样的
 * loose 如果最小约束都是0.0（不管最大约束），如果最小约束和最大约束都是0.0，就同时是tightly和loose
@@ -123,11 +123,11 @@ void layout(Constraints constraints, { bool parentUsesSize = false }) {
 
 ## Paint - 需要给GPU绘制出layer tree
 Paint 的重要工作就是确定哪些Element放在同一Layer
-![](../images4md/2020-10-27-11-57-28.png)
+![](./images4md/2020-10-27-11-57-28.png)
 
 布局size计算是自下而上的，但是paint是自上而下的。在layout之后，所有的Widget的大小、位置都已经确定，这时不需要再做遍历。
 
-![](../images4md/2020-10-27-11-57-50.png)
+![](./images4md/2020-10-27-11-57-50.png)
 
 Paint也是按照深度优先的顺序，而且总是先绘制自身，再是子节点，
 
@@ -135,7 +135,7 @@ Paint也是按照深度优先的顺序，而且总是先绘制自身，再是子
 节点 2是一个背景色绿色的视图，在绘制完自身后，绘制子节点3和4。
 当绘制完以后，Layer是按照深度优先的倒叙进行返回，类似Size的计算，而每个Layer就是一层，
 最后的结果是一个Layer Tree。
-![](../images4md/2020-10-27-13-33-44.png)
+![](./images4md/2020-10-27-13-33-44.png)
 
 2节点由于一些其他原因导致它的部分UI5与6处于了同一层，这样的结果会导致当2需要重绘的时候，与其不想相关的6实际上也会被重绘，而存在性能损耗。
 
@@ -143,7 +143,7 @@ Paint也是按照深度优先的顺序，而且总是先绘制自身，再是子
 
 ## Repaint boundary
 repaint boundary会强制的使2切换到新Layer
-![](../images4md/2020-10-27-13-36-20.png)
+![](./images4md/2020-10-27-13-36-20.png)
 
 `Repaint boundary`一般不需要开发者设置。但开发者可以手动设置，Flutter提供`RepaintBoundary`组件，你可以在你认为需要的地方，设置`Repaint boundary`。
 
