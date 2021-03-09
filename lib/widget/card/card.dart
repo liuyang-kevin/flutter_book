@@ -29,12 +29,17 @@ class CustomCardWidget extends StatelessWidget {
 
   Widget get _tileChild {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        ListTile(
-          // leading: Icon(icon, size: 36),
-          title: Text(title),
-          subtitle: Text(subTitle),
+        Expanded(
+          child: ListTile(
+            // leading: Icon(icon, size: 36),
+            title: Text(title),
+            subtitle: Text(
+              subTitle,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ),
       ],
     );

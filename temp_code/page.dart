@@ -8,7 +8,7 @@ class SnowingDemo extends StatefulWidget {
 class _State extends State<SnowingDemo> {
   @override
   Widget build(BuildContext context) {
-    Size mediaQuery = MediaQuery.of(context).size;
+    var mediaQuery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Container(

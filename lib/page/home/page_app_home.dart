@@ -1,4 +1,3 @@
-import 'package:app_lib/app_lib.dart';
 import 'package:book_demos/common.dart';
 import 'package:book_demos/engine/md_parser.dart';
 import 'package:book_demos/util/responsive.dart';
@@ -42,12 +41,8 @@ class _AppHomePageState extends ReduxState<int, AppHomePage> with SingleTickerPr
   void initState() {
     super.initState();
     parser = MarkdownParser(_mdWidgets, () => setState(() {}));
-    MarkdownParser.parserMarkdown('README.md', parser);
-    _tabController = TabController(vsync: this, length: myTabs.length);
-
-    () async {
-      print(await AppLib.api());
-    }();
+    MarkdownParser.parserMarkdown('markdown_sample.md', parser);
+    _tabController = TabController(vsync: this, length: myTabs.length, initialIndex: 1);
   }
 
   @override
@@ -68,7 +63,6 @@ class _AppHomePageState extends ReduxState<int, AppHomePage> with SingleTickerPr
       ),
       body: DefaultTabController(
         length: myTabs.length,
-        initialIndex: 1, // default is 0
         child: TabBarView(
           controller: _tabController,
           children: [
@@ -90,10 +84,9 @@ class _AppHomePageState extends ReduxState<int, AppHomePage> with SingleTickerPr
                 },
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: _mdWidgets,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
+              child: ListView(children: _mdWidgets),
             )
           ],
         ),

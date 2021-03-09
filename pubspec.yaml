@@ -28,6 +28,7 @@ flutter:
     - assets/h5/assets/js/dependencies/meyda/
     - assets/images/
     - README.md
+    - markdown_sample.md
     
 
 
